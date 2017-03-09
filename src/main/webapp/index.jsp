@@ -60,7 +60,7 @@
         var userName = document.getElementById('userName').value;
         //判断当前浏览器是否支持WebSocket
         if ('WebSocket' in window) {
-            websocket = new WebSocket("ws://localhost:8080/websocket?userName=" + userName);
+            websocket = new WebSocket("ws://172.168.11.21:8080/websocket?userName=" + userName);
             //连接发生错误的回调方法
             websocket.onerror = function () {
                 setMessageInnerHTML("WebSocket连接发生错误");

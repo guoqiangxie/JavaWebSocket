@@ -94,7 +94,7 @@ public class WebSocketTest {
         if (socketMessage.getType() == 1) {
             for (WebSocketTest item : webSocketUserMap.values()) {
                 try {
-                    item.sendMessage(socketMessage.getMessage());
+                    item.sendMessage(this.userName + "群发消息：" + socketMessage.getMessage());
                 } catch (IOException e) {
                     e.printStackTrace();
                     continue;
@@ -103,14 +103,15 @@ public class WebSocketTest {
         } else if (socketMessage.getType() == 2) {
             WebSocketTest webSocketTest = webSocketUserMap.get(socketMessage.getUserName());
             try {
-                webSocketTest.sendMessage(socketMessage.getMessage());
+                webSocketTest.sendMessage(this.userName + "给您发消息：" + socketMessage.getMessage());
+                this.sendMessage("您给" + webSocketTest.userName + "发送的消息:" + socketMessage.getMessage());
             } catch (IOException e) {
                 e.printStackTrace();
             }
         } else {
             for (WebSocketTest item : webSocketUserMap.values()) {
                 try {
-                    item.sendMessage("目前在线好友:" + webSocketUserMap.keySet().toString());
+                    item.sendMessage(this.userName + "登录，目前在线好友:" + webSocketUserMap.keySet().toString());
                 } catch (IOException e) {
                     e.printStackTrace();
                     continue;

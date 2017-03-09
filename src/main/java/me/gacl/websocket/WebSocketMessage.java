@@ -8,7 +8,7 @@ import java.io.Serializable;
 public class WebSocketMessage implements Serializable {
     private int type; //类型 1. 群发消息 2. 单发消息  3. 登录消息
     private String message;
-    private String userName;
+    private String userName; // 如果type=2，这个字段指定接收人
 
     public String getUserName() {
         return userName;
